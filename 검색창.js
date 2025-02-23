@@ -37,15 +37,12 @@ function showSearchResults(inputId, resultId, data, category) {
     let exactMatch = "";
     let similarMatches = [];
 
-
-   if (category === 'special') {
+    if (category === 'special') {
         for (let floor in floors) {
             if (floors[floor].rooms.includes(searchInput)) {
                 foundFloor = floor;
                 exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
-            }
-            
-                else {
+            } else {
                 floors[floor].rooms.forEach(room => {
                     if (room.includes(searchInput)) {
                         similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
@@ -53,44 +50,37 @@ function showSearchResults(inputId, resultId, data, category) {
                 });
             }
         }
-    } 
-   else if (category === 'class') {
+    } else if (category === 'class') {
         for (let room in classRooms) {
             if (room === searchInput) {
                 foundFloor = classRooms[room];  
                 exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
-            }
-            else if (room.includes(searchInput)) {
+            } else if (room.includes(searchInput)) {
                 similarMatches.push(`<p><strong>${room}</strong>: ${classRooms[room]}에 위치</p>`);
             }
         }
     }
-
 
     console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
 
     const isValidCategory =
         (category === 'special' && specialRooms[searchInput]) ||
         (category === 'class' && classRooms[searchInput]);
-    
 
     if (isValidCategory) {
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = exactMatch + "<hr>" + similarMatches.join("");
 
-        if (foundFloor && ((category === 'special' && specialRooms[searchInput]) ||
-                           (category === 'class' && classRooms[searchInput]))) {
-
+        if (foundFloor) {
             setTimeout(() => {
-                if (['1F','2F','3F','4F','5F'].includes(foundFloor)) {
+                if (['1F', '2F', '3F', '4F', '5F'].includes(foundFloor)) {
                     redirectToFloor(foundFloor);
                 }
-            }, 1000);
+            }, 1000); 
         }
-    } 
-    
-    else {
+    } else {
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = "검색 결과 없음<br>다른 검색어를 입력해 주세요.";
     }
 }
+
