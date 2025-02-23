@@ -1,1 +1,1 @@
-[원주여자고등학교 학교지도 웹사이트](https://github.com/Hwiseonge/schoolproject)
+원주여자고등학교 웹사이트입니다.
