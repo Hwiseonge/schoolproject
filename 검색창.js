@@ -37,18 +37,34 @@ function showSearchResults(inputId, resultId, data, category) {
     let exactMatch = "";
     let similarMatches = [];
 
-    for (let floor in floors) {
-        if (floors[floor].rooms.includes(searchInput)) {
-            foundFloor = floor;
-            exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
-        } else {
-            floors[floor].rooms.forEach(room => {
-                if (room.includes(searchInput)) {
-                    similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
-                }
-            });
+
+   if (category === 'special') {
+        for (let floor in floors) {
+            if (floors[floor].rooms.includes(searchInput)) {
+                foundFloor = floor;
+                exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
+            }
+            else {
+                floors[floor].rooms.forEach(room => {
+                    if (room.includes(searchInput)) {
+                        similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+                    }
+                });
+            }
+        }
+    } 
+   else if (category === 'class') {
+        for (let room in classRooms) {
+            if (room === searchInput) {
+                foundFloor = classRooms[room];  
+                exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
+            }
+            else if (room.includes(searchInput)) {
+                similarMatches.push(`<p><strong>${room}</strong>: ${classRooms[room]}에 위치</p>`);
+            }
         }
     }
+
 
     console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
 
