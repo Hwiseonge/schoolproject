@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <link rel="stylesheet" href="1층.css">  <!-- 외부 CSS 파일 링크 -->
+    <script src="../검색창.js" defer></script>
+    <script src="1층.js" defer></script>  
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=650,initial-scale=0.5, maximum-scale=2">
+
+    <title>Document</title>
+ 
+</head>
+<body>
+
+    <br>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;원주여자고등학교 학교 지도 웹사이트</h1>
+    <img src="../원여고위치/원주여고로고.png" style="width:40px; height:40px; position:absolute; top:55px;">
+    <h4 style="color:rgb(175, 175, 175); position: absolute; right:20px; top:100px;">made by CO;DE 동아리</h4>
+    <br>
+    <hr>
+    <h3>검색창</h3>
+    <!-- 검색창 -->
+    <div id="search_container">
+        <!-- 특별실 검색 -->
+        <h4>특별실 입력</h4><br>
+            <input id="specialRoomSearch" class="search_input" type="text" placeholder="특별실 입력">
+            <button class="search-btn" onclick="combinedSearch('specialRoomSearch', 'specialRoomResult', specialRooms, 'special')">검색</button>
+            <div id="specialRoomResult" class="result_box"></div><br>
+      
+    
+        <!-- 교실 검색 -->
+        <h4>교실 입력</h4><br>
+            <input id="classSearch" class="search_input" type="text" placeholder="교실 입력">
+            <button class="search-btn" onclick="combinedSearch('classSearch', 'classResult', classRooms, 'class')">검색</button>
+            <div id="classResult" class="result_box"></div>
+        
+    
+        <!-- 선생님 검색 -->
+        <br><h4>선생님 입력</h4><br>
+            <input id="teacherSearch" class="search_input" type="text" placeholder="선생님 입력">
+            <button class="search-btn" onclick="combinedSearch('teacherSearch', 'teacherResult', teachers, 'teacher')">검색</button> 
+            <div id="teacherResult" class="result_box"></div>
+  
+  
+    <!-- 교실 정보 표시 -->
+    <div id="class_info"></div>
+
+    <br>
+    <!-- 층 표시해주는 말 -->
+    <h1>1층 안내도</h1>
+
+    <!-- 1층 화면 -->
+    <div id="_1F">
+        <img src="../원여고위치/1층.jpg" style="width:700px; height:600px;">
+        
+
+        <a id="_1F_교무실" onclick="teacher_list()">1층 교무실</a>
+        <a id="_1F_교장실" onclick="teacher_list2()">교장실</a>
+    </div>
+    
+    
+    
+    <!-- 교무실 선생님들 목록 -->
+    <div id="_1F_교무실_선생님들">
+        1층 교무실
+        <div class="teacher_box">농담곰 선생님<br>(과학 선생님)</div>
+        <div class="teacher_box">에스파 선생님<br>(1-1 담임 선생님)</div>
+        <div class="teacher_box">엔믹스 선생님</div>
+        <div class="teacher_box">JYP 선생님</div>
+    </div>
+    
+    
+    <div id="_1F_교장실_선생님들">
+        1층 교장실
+        <div class="teacher_box">강회진 교장선생님</div>
+    </div>
+    
+    <div id="icon_box">
+         <!-- 1층으<로 이동하는 아이콘 -->
+         <div id="_1F_icon" class="floor_icon"><a href="1층.html">1층</a></div>
+         <!-- 2층으로 이동하는 아이콘 -->
+         <div id="_2F_icon" class="floor_icon"><a href="..\2층\2층.html">2층</a></div>
+         <!-- 3층으로 이동하는 아이콘 -->
+         <div id="_3F_icon" class="floor_icon"><a href="..\3층\3층.html">3층</a></div>
+         <!-- 4층으로 이동하는 아이콘 -->
+         <div id="_4F_icon" class="floor_icon"><a href="..\4층\4층.html">4층</a></div>
+         <!-- 5층으로 이동하는 아이콘 -->
+         <div id="_5F_icon" class="floor_icon"><a href="..\5층\5층.html">5층</a></div>
+    </div>
+    <br>
+    <br><br>
+
+   
+    <h5 style="color:rgb(175, 175, 175); " >업데이트 내용</h5> 
+    <h6 style="color:rgb(194, 194, 194);"> (최근 업데이트 날짜:2/22) </h6>
+        <br><hr>
+    <h6 style="color:rgb(175, 175, 175);">-반 검색창 추가(반 찾기 기능) </h6>
+    <br><br>
+    
+
+    <h5 style="color:rgb(175, 175, 175); " >주의사항</h5>
+    <hr><br>
+    <h6 style="color:rgb(175, 175, 175); " >이 웹사이트는 CO;DE 동아리에서 제작한 것으로, 현재 개발 초기 
+        단계에 있어 운영이 미흡할 수 있습니다.<br>
+         또한, 엘리베이터 부근의 학교 지도 사진을 기반으로 제작되었기 때문에,
+          신설된 특별실 정보가 반영되지
+          않은 점 양해 부탁드립니다. <br>향후 지속적인 업데이트를 통해 신설된 특별실의 위치와,특별실의 
+          명칭 및 담당 교사 성함 등을 검색할 수 있는 기능을 추가할 예정입니다. </h6><br><br>
+
+
+<h5 style="color:rgb(175, 175, 175); " >문의</h5><br><hr>
+<h6 style="color:rgb(175, 175, 175); " >instagram: xhaktn(부장), sungso2008(차장) </h6><br> 
+
+
+    </body>
+</html>
