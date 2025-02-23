@@ -2,12 +2,13 @@
 
 
 const floors = {
-    '1F': { rooms: ['1층 교무실', '행정실','교장실'], url: "index.html" },
-    '2F': { rooms: ['도서관', '컴퓨터실'], url: "2층.html" },
+    '1F': { rooms: ['1층 교무실', '행정실','교장실','보건실', '방송실', '예지홀', '건강체육교실'], url: "index.html" },
+    '2F': { rooms: ['도서관', '컴퓨터실','체육관', '학생부','메이커스실'], url: "2층.html" },
     '3F': { rooms: ['가정실'], url: "3층.html" },
-    '4F': { rooms: ['음악실','미술실'], url: "4층.html" },
-    '5F': { rooms: ['화학실','급식실'], url: "5층.html" },
+    '4F': { rooms: ['음악실','미술실','지구과학실','물리실'], url: "4층.html" },
+    '5F': { rooms: ['화학실','급식실','생명과학실','wee클래스'], url: "5층.html" },
 };
+
 
 // 특정 층으로 자동 이동
 function redirectToFloor(targetFloor) {
