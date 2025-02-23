@@ -115,12 +115,10 @@ function showSearchResults(inputId, resultId, data, category) {
 
 
     console.log(`검색어: ${searchInput}`);
-    console.log(`찾은 층: ${foundFloor}`);
+    console.log(`찾은 층: ${foundFloor ? foundFloor : "검색 결과 없음"}`);
     console.log(`카테고리 : ${category}`);
 
-    const isValidCategory =
-        (category === 'special' && specialRooms[searchInput]) ||
-        (category === 'class' && classRooms[searchInput]);
+    const isValidCategory = !!foundFloor;
     
 
     if (isValidCategory) {
@@ -130,7 +128,7 @@ function showSearchResults(inputId, resultId, data, category) {
         if (foundFloor){
 
             setTimeout(() => {
-                console.log('층 이동 시도: ${foundFloor});
+                console.log(`층 이동 시도: ${foundFloor}`);
                 redirectToFloor(foundFloor);
             }, 1000);
         }
