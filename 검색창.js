@@ -1,0 +1,79 @@
+// 화면전환
+
+
+const floors = {
+    '1F': { rooms: ['1층 교무실', '행정실','교장실'], url: "../1층/1층.html" },
+    '2F': { rooms: ['도서관', '컴퓨터실'], url: "../2층/2층.html" },
+    '3F': { rooms: ['가정실'], url: "../3층/3층.html" },
+    '4F': { rooms: ['음악실','미술실'], url: "../4층/4층.html" },
+    '5F': { rooms: ['화학실','급식실'], url: "../5층/5층.html" },
+};
+
+
+// 특정 층으로 자동 이동
+function redirectToFloor(targetFloor) {
+    if (!targetFloor || !floors[targetFloor]) return;
+
+    console.log(`층 이동 실행: ${targetFloor} → ${floors[targetFloor].url}`);
+    window.location.href = floors[targetFloor].url;
+}
+
+function combinedSearch(inputId, resultId, data, category) {
+    showInfo(inputId, resultId, data);
+    showSearchResults(inputId, resultId, data, category);
+}
+
+// 검색 후 자동 이동하는 함수
+function showSearchResults(inputId, resultId, data, category) {
+    const searchInput = document.getElementById(inputId).value.trim();
+    const resultDiv = document.getElementById(resultId);
+
+    if (!searchInput) {
+        resultDiv.style.display = 'none';
+        return;
+    }
+
+    let foundFloor = null;
+    let exactMatch = "";
+    let similarMatches = [];
+
+    for (let floor in floors) {
+        if (floors[floor].rooms.includes(searchInput)) {
+            foundFloor = floor;
+            exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
+        } else {
+            floors[floor].rooms.forEach(room => {
+                if (room.includes(searchInput)) {
+                    similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+                }
+            });
+        }
+    }
+
+    console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
+
+    const isValidCategory =
+        (category === 'special' && specialRooms[searchInput]) ||
+        (category === 'class' && classRooms[searchInput]);
+    
+
+    if (isValidCategory) {
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = exactMatch + "<hr>" + similarMatches.join("");
+
+        if (foundFloor && ((category === 'special' && specialRooms[searchInput]) ||
+                           (category === 'class' && classRooms[searchInput]))) {
+
+            setTimeout(() => {
+                if (['1F','2F','3F','4F','5F'].includes(foundFloor)) {
+                    redirectToFloor(foundFloor);
+                }
+            }, 1000);
+        }
+    } 
+    
+    else {
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = "검색 결과 없음<br>다른 검색어를 입력해 주세요.";
+    }
+}
