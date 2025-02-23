@@ -44,13 +44,12 @@ function showSearchResults(inputId, resultId, data, category) {
                 foundFloor = floor;
                 exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
             }
-            else {
-                floors[floor].rooms.forEach(room => {
+            
                     if (room.includes(searchInput)) {
                         similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
                     }
-                });
-            }
+                );
+            
         }
     } 
    else if (category === 'class') {
