@@ -50,13 +50,19 @@ function showSearchResults(inputId, resultId, data, category) {
                 });
             }
         }
-    } else if (category === 'class') {
-        for (let room in classRooms) {
-            if (room === searchInput) {
-                foundFloor = classRooms[room];  
-                exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
-            } else if (room.includes(searchInput)) {
-                similarMatches.push(`<p><strong>${room}</strong>: ${classRooms[room]}에 위치</p>`);
+    } 
+    else if (category === 'class') {
+        for (let floor in floors) {
+            if (floors[floor].room.includes(searchInput)) {
+                foundFloor = floor;  
+                exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
+
+            } else {
+                floors[floor].room.forEach(room => {
+                    if (room.includes(searchInput)) {
+                        similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+                    }
+                });
             }
         }
     }
