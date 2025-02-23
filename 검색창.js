@@ -64,7 +64,7 @@ const floors = {
     '2층': { rooms: ['도서관', '체육관', '컴퓨터실'], url: "../2층/2층.html" },
     '3층': { rooms: ['가정실'], url: "../3층/3층.html" },
     '4층': { rooms: ['음악실','미술실','지구과학실','물리실'], url: "../4층/4층.html" },
-    '5층층': { rooms: ['화학실','생명과학실','급식실'], url: "../5층/5층.html" },
+    '5층': { rooms: ['화학실','생명과학실','급식실'], url: "../5층/5층.html" },
 };
 
 
@@ -95,18 +95,24 @@ function showSearchResults(inputId, resultId, data, category) {
     let exactMatch = "";
     let similarMatches = [];
 
-    for (let floor in floors) {
-        if (floors[floor].rooms.includes(searchInput)) {
-            foundFloor = floor;
-            exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
-        } else {
-            floors[floor].rooms.forEach(room => {
-                if (room.includes(searchInput)) {
-                    similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
-                }
-            });
+        for (let key in specialRooms) {
+        if (key === searchInput) {
+            foundFloor = specialRooms[key]; // 해당 층 저장
+            exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
+        } else if (key.includes(searchInput)) {
+            similarMatches.push(`<p><strong>${key}</strong>: ${specialRooms[key]}에 위치</p>`);
         }
     }
+
+    for (let key in classRooms) {
+        if (key === searchInput) {
+            foundFloor = classRooms[key]; // 해당 층 저장
+            exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
+        } else if (key.includes(searchInput)) {
+            similarMatches.push(`<p><strong>${key}</strong>: ${classRooms[key]}에 위치</p>`);
+        }
+    }
+
 
     console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
 
@@ -123,7 +129,7 @@ function showSearchResults(inputId, resultId, data, category) {
                            (category === 'class' && classRooms[searchInput]))) {
 
             setTimeout(() => {
-                if (['1F','2F','3F','4F','5F'].includes(foundFloor)) {
+                if (['1층','2층','3층','4층','5층'].includes(foundFloor)) {
                     redirectToFloor(foundFloor);
                 }
             }, 1000);
