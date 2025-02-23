@@ -42,6 +42,7 @@ function showSearchResults(inputId, resultId, data, category) {
 
     let foundFloor = null;
     let exactMatch = "";
+    let similarMatches = [];
 
     if (category === 'special') {
         for (let floor in floors) {
@@ -49,6 +50,12 @@ function showSearchResults(inputId, resultId, data, category) {
                 foundFloor = floor;
                 exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
                 break;  // 정확한 일치가 있으면 반복문 종료
+            } else {
+                floors[floor].rooms.forEach(room => {
+                    if (room.includes(searchInput)) {
+                        similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+                    }
+                });
             }
         }
     } else if (category === 'class') {
@@ -57,6 +64,8 @@ function showSearchResults(inputId, resultId, data, category) {
                 foundFloor = classRooms[room];
                 exactMatch = `<p><strong>${searchInput}</strong>: ${foundFloor}에 위치</p>`;
                 break;
+            } else if (room.includes(searchInput)) {
+                similarMatches.push(`<p><strong>${room}</strong>: ${classRooms[room]}에 위치</p>`);
             }
         }
     }
@@ -65,13 +74,14 @@ function showSearchResults(inputId, resultId, data, category) {
 
     if (foundFloor) {
         resultDiv.style.display = 'block';
-        resultDiv.innerHTML = exactMatch;
+        resultDiv.innerHTML = exactMatch + "<hr>" + similarMatches.join("");
 
+        // 검색 결과를 1초 뒤에 처리
         setTimeout(() => {
             if (['1F', '2F', '3F', '4F', '5F'].includes(foundFloor)) {
                 redirectToFloor(foundFloor);
             }
-        }, 1000);
+        }, 1000); // 1초 후 이동
     } else {
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = "검색 결과 없음<br>다른 검색어를 입력해 주세요.";
