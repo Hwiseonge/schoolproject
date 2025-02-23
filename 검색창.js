@@ -114,7 +114,9 @@ function showSearchResults(inputId, resultId, data, category) {
     }
 
 
-    console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
+    console.log(`검색어: ${searchInput}`);
+    console.log(`찾은 층: ${foundFloor}`);
+    console.log(`카테고리 : ${category}`);
 
     const isValidCategory =
         (category === 'special' && specialRooms[searchInput]) ||
@@ -125,13 +127,11 @@ function showSearchResults(inputId, resultId, data, category) {
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = exactMatch + "<hr>" + similarMatches.join("");
 
-        if (foundFloor && ((category === 'special' && specialRooms[searchInput]) ||
-                           (category === 'class' && classRooms[searchInput]))) {
+        if (foundFloor){
 
             setTimeout(() => {
-                if (['1층','2층','3층','4층','5층'].includes(foundFloor)) {
-                    redirectToFloor(foundFloor);
-                }
+                console.log('층 이동 시도: ${foundFloor});
+                redirectToFloor(foundFloor);
             }, 1000);
         }
     } 
