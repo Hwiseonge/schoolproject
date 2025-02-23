@@ -25,21 +25,21 @@
         <!-- 특별실 검색 -->
         <h4>특별실 입력</h4><br>
             <input id="specialRoomSearch" class="search_input" type="text" placeholder="특별실 입력">
-            <button class="search-btn" onclick="showInfo('specialRoomSearch', 'specialRoomResult', specialRooms)">검색</button>
+            <button class="search-btn" onclick="combinedSearch('specialRoomSearch', 'specialRoomResult', specialRooms, 'special')">검색</button>
             <div id="specialRoomResult" class="result_box"></div><br>
       
     
         <!-- 교실 검색 -->
         <h4>교실 입력</h4><br>
             <input id="classSearch" class="search_input" type="text" placeholder="교실 입력">
-            <button class="search-btn" onclick="showInfo('classSearch', 'classResult', classRooms)">검색</button>
+            <button class="search-btn" onclick="combinedSearch('classSearch', 'classResult', classRooms, 'class')">검색</button>
             <div id="classResult" class="result_box"></div>
         
     
         <!-- 선생님 검색 -->
         <br><h4>선생님 입력</h4><br>
             <input id="teacherSearch" class="search_input" type="text" placeholder="선생님 입력">
-            <button class="search-btn" onclick="showInfo('teacherSearch', 'teacherResult', teachers)">검색</button> 
+            <button class="search-btn" onclick="showTeacherResult('teacherSearch', 'teacherResult')">검색</button> 
             <div id="teacherResult" class="result_box"></div>
   
     <!-- 교실 정보 표시 -->
