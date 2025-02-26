@@ -85,8 +85,8 @@ const classRooms = {
         function showInfo(inputId, resultId, data) {
             const searchInput = document.getElementById(inputId).value.trim();
             const resultDiv = document.getElementById(resultId);
-            const 교무실텍스트=document.getElementById('_1F_교무실')
-            const 교장실텍스트=document.getElementById('_1F_교장실')
+            const 교무실텍스트=document.getElementById('_2F_교무실')
+            
         
             if (교무실텍스트) 교무실텍스트.classList.remove('highlight')
             if (교장실텍스트) 교장실텍스트.classList.remove('highlight')
@@ -124,14 +124,16 @@ const classRooms = {
                 선생님들.style.display = "block";
                 선생님들.style.position = "fixed";
                 교무실.style.color='red';
-                선생님들.style.top = "10vh";
-                선생님들.style.right = "70vw";
+                선생님들.style.top = "70vh";
+                선생님들.style.right = "10vw";
                 선생님들.style.zIndex = "10";
             } else {
                 선생님들.style.display = "none";
                 교무실.style.color='black';
             }
         }
+
+        
     
         const btnTeacher2F = document.getElementById('btn_teacher_2F');
      
