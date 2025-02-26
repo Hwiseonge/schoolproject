@@ -127,8 +127,8 @@ const classRooms = {
             선생님들.style.display = "block";
             선생님들.style.position = "absolute";
             교무실.style.color='red';
-            선생님들.style.top = "70vh";
-            선생님들.style.right = "10vw";
+            선생님들.style.top = "60vh";
+            선생님들.style.right = "5vw";
             선생님들.style.zIndex = "10";
         } else {
             선생님들.style.display = "none";
