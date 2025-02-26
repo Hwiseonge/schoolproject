@@ -145,7 +145,7 @@ function teacher_list2() {
         교장실선생님들.style.position = "absolute";
         교장실선생님들.style.top = "75vh";
         교장실.style.color='red';
-        교장실선생님들.style.right = "30vw";
+        교장실선생님들.style.right = "10vw";
         교장실선생님들.style.zIndex = "10";
     } else {
         교장실선생님들.style.display = "none";
