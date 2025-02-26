@@ -143,7 +143,7 @@ function teacher_list2() {
     if (교장실선생님들.style.display === "none" || 교장실선생님들.style.display === "") {
         교장실선생님들.style.display = "block";
         교장실선생님들.style.position = "absolute";
-        교장실선생님들.style.top = "85vh";
+        교장실선생님들.style.top = "60vh";
         교장실.style.color='red';
         교장실선생님들.style.right = "5vw";
         교장실선생님들.style.zIndex = "10";
