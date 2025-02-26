@@ -152,11 +152,11 @@ color:rgb(248, 14, 170)
     /* 주요 찾아볼 수 있는 곳 */
     #_2F_교무실 {
         position: absolute;
-        right: 405px;
-        top: 195px;
-        background-color: none;
+        right: 283px;
+            top: 405px;
+        
         text-align: center;
-        font-size: 16px;
+        font-size: 13px;
     }
 
 
