@@ -120,7 +120,7 @@ const classRooms = {
 
   const teachers = {
      '농담곰': '농담곰은 사랑입니다❤️',
-     '치이카와' : ❤️
+     '치이카와' : '❤️'
         }
 
 
