@@ -15,6 +15,7 @@
     '전통관':'1층',
     '행정실장실': '1층',
     '행정실':'1층',
+    '교장실':'1층',
     '운영위원회의실': '1층',
     '보건실': '1층',
 
@@ -128,7 +129,9 @@ const teachers = {
         function showInfo(inputId, resultId, data) {
             const searchInput = document.getElementById(inputId).value.trim();
             const resultDiv = document.getElementById(resultId);
-            const 교무실텍스트=document.getElementById('_2F_교무실')
+            const 교무실텍스트=document.getElementById('_1F_교무실')
+            const 교장실텍스트=document.getElementById('_1F_교장실')
+
             
         
             if (교무실텍스트) 교무실텍스트.classList.remove('highlight')
