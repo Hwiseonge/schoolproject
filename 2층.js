@@ -177,15 +177,15 @@ const teachers = {
 
         
     
-        const btnTeacher2F = document.getElementById('btn_teacher_2F');
-     
-        btnTeacher2F.addEventListener('click', function() {
-            if (teacher2F.style.display === 'block') {
-                teacher2F.style.display = 'none';
-            } else {
-                
-                teacher2F.style.display = 'none';
-            }
-        });
+        const btnTeacher2F = document.getElementById('btn_teacher_2F'); // 요소 가져오기
+
+if (btnTeacher2F) {  // 요소가 존재할 때만 실행
+    btnTeacher2F.addEventListener('click', function() {
+        console.log("2층 교무실 버튼 클릭됨");
+    });
+} else {
+    console.error("btn_teacher_2F 요소를 찾을 수 없음! HTML에 해당 ID가 있는지 확인하세요.");
+}
+
         
     
