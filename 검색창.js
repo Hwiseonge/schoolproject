@@ -38,18 +38,17 @@ function showSearchResults(inputId, resultId, data, category) {
     let similarMatches = [];
 
     for (let floor in floors) {
-    floors[floor].rooms.forEach(room => {
-        if (room === searchInput) {
-            // ✅ 완전 일치하는 경우
-            exactMatch = `<p><strong>${room}</strong>: ${floor}에 위치</p>`;
+        if (floors[floor].rooms.includes(searchInput)) {
             foundFloor = floor;
-        } 
-        else if (searchInput.length > 1 && room.includes(searchInput)) { 
-            // ✅ 부분 일치 (한글 & 숫자 모두 적용)
-            similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+            exactMatch = `<p><strong>${searchInput}</strong>: ${floor}에 위치</p>`;
+        } else {
+            floors[floor].rooms.forEach(room => {
+                if (room.includes(searchInput)) {
+                    similarMatches.push(`<p><strong>${room}</strong>: ${floor}에 위치</p>`);
+                }
+            });
         }
-    });
-}
+    }
 
     console.log(`검색어: ${searchInput}, 찾은 층: ${foundFloor}, 카테고리 : ${category}`);
 
