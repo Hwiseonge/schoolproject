@@ -15,7 +15,6 @@
     '전통관':'1층',
     '행정실장실': '1층',
     '행정실':'1층',
-    '교장실':'1층',
     '운영위원회의실': '1층',
     '보건실': '1층',
 
@@ -118,8 +117,10 @@ const classRooms = {
 };
 
 const teachers = {
-     '농담곰': '농담곰은 사랑입니다❤️',
-     '치이카와' : '❤️'
+     '농담곰': '매우 귀여워요.❤️',
+     '고로케': '맛있어보여요❤️',
+     '치이카와': '귀여워',
+     '선생님': '왜 부르셨죠?'
         }
 
 
@@ -177,15 +178,14 @@ const teachers = {
 
         
     
-        const btnTeacher2F = document.getElementById('btn_teacher_2F'); // 요소 가져오기
-
-if (btnTeacher2F) {  // 요소가 존재할 때만 실행
-    btnTeacher2F.addEventListener('click', function() {
-        console.log("2층 교무실 버튼 클릭됨");
-    });
-} else {
-    console.error("btn_teacher_2F 요소를 찾을 수 없음! HTML에 해당 ID가 있는지 확인하세요.");
-}
-
+        const btnTeacher2F = document.getElementById('btn_teacher_2F');
+     
+        btnTeacher2F.addEventListener('click', function() {
+            if (teacher2F.style.display === 'block') {
+                teacher2F.style.display = 'none';
+            } else {
+                
+                teacher2F.style.display = 'none';
+            }
+        });
         
-    
